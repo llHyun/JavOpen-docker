@@ -1,8 +1,11 @@
 package com.JavOpen.contest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 public class DetectDTO {
+    @JsonIgnore
     private String location;
     private String antImg;
     private LocalDateTime date;

@@ -43,6 +43,7 @@ public class DetectService {
                 .collect(Collectors.groupingBy(DetectDTO::getLocation));
 
 
+
         // 모든 location을 순회하며 Summary 생성 (탐지 결과가 없는 장소는 count=0으로 설정)
         return locations.stream()
                 .map(location -> {
