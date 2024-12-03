@@ -16,6 +16,9 @@ public class Device {
     @Column(name = "LOCATION", nullable = false)
     private String location;  // BIG_RESULT와 연결
 
+    @Column(name = "ADDRESS", nullable = true)
+    private String address;
+
     public Integer getDeviceId() {
         return deviceId;
     }
@@ -38,5 +41,13 @@ public class Device {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

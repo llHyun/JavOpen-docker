@@ -7,13 +7,16 @@ import java.time.LocalDateTime;
 public class DetectDTO {
     @JsonIgnore
     private String location;
+    @JsonIgnore
+    private String address;
     private String antImg;
     private LocalDateTime date;
 
     private Double probability;
 
-    public DetectDTO(String location, Double probability, String antImg, LocalDateTime date) {
+    public DetectDTO(String location, String address, Double probability, String antImg, LocalDateTime date) {
         this.location = location;
+        this.address = address;
         this.probability = probability;
         this.antImg = antImg;
         this.date = date;
@@ -25,6 +28,14 @@ public class DetectDTO {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Double getProbability() {

@@ -11,12 +11,13 @@ import java.util.List;
 
 @Repository
 public interface DetectRepository extends JpaRepository<Detect, Integer> {
-    @Query("SELECT new com.JavOpen.contest.model.DetectDTO(d.location, d.probability, d.antImg, d.date) " +
+    @Query("SELECT new com.JavOpen.contest.model.DetectDTO(d.location, d.address, d.probability, d.antImg, d.date) " +
             "FROM Detect d WHERE d.user.userId = :userId AND d.location IN :locations")
     List<DetectDTO> findDetectsByUserIdAndLocations(@Param("userId") int userId, @Param("locations") List<String> locations);
 
-    @Query("SELECT d.location, COUNT(d) FROM Detect d " +
+    @Query("SELECT d.location, COUNT(d), d.address FROM Detect d " +
             "WHERE d.user.userId = :userId AND d.location IN :locations " +
-            "GROUP BY d.location")
+            "GROUP BY d.location, d.address")
     List<Object[]> findDetectCountsByUserIdAndLocations(@Param("userId") int userId, @Param("locations") List<String> locations);
+
 }

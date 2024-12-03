@@ -18,6 +18,9 @@ public class Detect {
     @Column(name = "LOCATION", nullable = false)
     private String location;
 
+    @Column(name = "ADDRESS", nullable = true)
+    private String address;
+
     @Column(name="PROBABILITY", nullable = false)
     private Double probability;
 
@@ -50,6 +53,14 @@ public class Detect {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Double getProbability() {

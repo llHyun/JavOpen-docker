@@ -34,6 +34,7 @@ public class DetectController {
         Detect detect = new Detect();
         detect.setUser(user);
         detect.setLocation((String) requestData.get("location"));
+        detect.setAddress((String) requestData.get("address"));
         detect.setProbability((Double) requestData.get("probability"));
         detect.setAntImg((String) requestData.get("antImg"));
 
