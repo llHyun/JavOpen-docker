@@ -31,6 +31,7 @@ public class DeviceController {
         Device device = new Device();
         device.setUser(user);
         device.setLocation((String) requestData.get("location"));
+        device.setAddress((String) requestData.get("address"));
 
         boolean isDuplicate = deviceService.isLocationExists(user_Id, device.getLocation());
         if (isDuplicate) {
