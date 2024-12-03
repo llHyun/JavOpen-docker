@@ -2,15 +2,12 @@ package com.JavOpen.contest.controller;
 
 
 import com.JavOpen.contest.model.Device;
-import com.JavOpen.contest.model.DeviceDTO;
 import com.JavOpen.contest.model.User;
 import com.JavOpen.contest.service.DeviceService;
 import com.JavOpen.contest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Map;
 
 @RestController

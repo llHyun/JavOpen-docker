@@ -2,8 +2,6 @@ package com.JavOpen.contest.repository;
 
 import com.JavOpen.contest.model.Detect;
 import com.JavOpen.contest.model.DetectDTO;
-import com.JavOpen.contest.model.Device;
-import com.JavOpen.contest.model.DeviceDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

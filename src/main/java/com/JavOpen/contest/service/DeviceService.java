@@ -2,13 +2,9 @@ package com.JavOpen.contest.service;
 
 import com.JavOpen.contest.model.Device;
 import com.JavOpen.contest.model.DeviceDTO;
-import com.JavOpen.contest.model.User;
 import com.JavOpen.contest.repository.DeviceRepository;
-import com.JavOpen.contest.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

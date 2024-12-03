@@ -5,7 +5,6 @@ import com.JavOpen.contest.model.User;
 import com.JavOpen.contest.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
