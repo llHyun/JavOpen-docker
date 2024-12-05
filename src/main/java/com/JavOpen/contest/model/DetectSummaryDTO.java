@@ -4,11 +4,13 @@ import java.util.List;
 
 public class DetectSummaryDTO {
     private String location;
+    private String address;
     private int count;
     private List<DetectDTO> detects;
 
-    public DetectSummaryDTO(String location, int count, List<DetectDTO> detects) {
+    public DetectSummaryDTO(String location, String address, int count, List<DetectDTO> detects) {
         this.location = location;
+        this.address = address;
         this.count = count;
         this.detects = detects;
     }
@@ -19,6 +21,14 @@ public class DetectSummaryDTO {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getCount() {
