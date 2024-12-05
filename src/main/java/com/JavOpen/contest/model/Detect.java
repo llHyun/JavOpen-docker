@@ -18,7 +18,7 @@ public class Detect {
     @Column(name = "LOCATION", nullable = false)
     private String location;
 
-    @Column(name = "ADDRESS", nullable = true)
+    @Column(name = "ADDRESS", nullable = false)
     private String address;
 
     @Column(name="PROBABILITY", nullable = false)
