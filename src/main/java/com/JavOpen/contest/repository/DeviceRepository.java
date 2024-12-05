@@ -18,4 +18,6 @@ public interface DeviceRepository extends JpaRepository<Device, Integer> {
             "FROM Device r WHERE r.user.userId = :userId")
     List<DeviceDTO> findResultsByUserId(@Param("userId") int userId);
 
+    @Query("SELECT d.address FROM Device d WHERE d.user.userId = :userId AND d.location = :location")
+    String findAddressByUserIdAndLocation(@Param("userId") int userId, @Param("location") String location);
 }

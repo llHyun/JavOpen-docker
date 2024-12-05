@@ -33,5 +33,9 @@ public class DeviceService {
         return deviceRepository.findResultsByUserId(userId);
     }
 
+    public String getAddressByUserIdAndLocation(int userId, String location){
+        return deviceRepository.findAddressByUserIdAndLocation(userId, location);
+    }
+
 
 }

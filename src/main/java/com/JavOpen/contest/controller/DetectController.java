@@ -27,14 +27,17 @@ public class DetectController {
         String adminId = (String) requestData.get("adminId");
         int user_Id = userService.findByAdminId(adminId);
 
+        String loc = (String) requestData.get("location");
+        String addr = deviceService.getAddressByUserIdAndLocation(user_Id, loc);
+
         User user = new User();
         user.setUserId(user_Id);
 
         // Device 객체 생성
         Detect detect = new Detect();
         detect.setUser(user);
-        detect.setLocation((String) requestData.get("location"));
-        detect.setAddress((String) requestData.get("address"));
+        detect.setLocation(loc);
+        detect.setAddress(addr);
         detect.setProbability((Double) requestData.get("probability"));
         detect.setAntImg((String) requestData.get("antImg"));
 
