@@ -2,6 +2,7 @@ package com.JavOpen.contest.service;
 
 import com.JavOpen.contest.model.*;
 import com.JavOpen.contest.repository.DetectRepository;
+import com.JavOpen.contest.repository.DeviceRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 @Transactional
 public class DetectService {
     private final DetectRepository detectRepository;
+    private final DeviceRepository deviceRepository;
 
     @Autowired
-    public DetectService(DetectRepository detectRepository) {
+    public DetectService(DetectRepository detectRepository, DeviceRepository deviceRepository) {
         this.detectRepository = detectRepository;
+        this.deviceRepository = deviceRepository;
     }
 
     //장치등록
@@ -30,18 +33,21 @@ public class DetectService {
         // Detect 데이터를 가져옴
         List<DetectDTO> detects = detectRepository.findDetectsByUserIdAndLocations(userId, locations);
 
-        // 장소별 개수 및 address 조회
+        // 장소별 개수 조회
         List<Object[]> detectCounts = detectRepository.findDetectCountsByUserIdAndLocations(userId, locations);
 
         // 장소별 개수와 address를 Map으로 변환
         Map<String, String> addressMap = new HashMap<>();
         Map<String, Integer> countMap = new HashMap<>();
+
         for (Object[] row : detectCounts) {
             String location = (String) row[0];
             int count = ((Long) row[1]).intValue();
-            String address = (String) row[2];
             countMap.put(location, count);
-            addressMap.put(location, address);
+
+            // address를 가져와 Map에 저장
+            String address = deviceRepository.findAddressByUserIdAndLocation(userId, location);
+            addressMap.put(location, address != null ? address : "Unknown");
         }
 
         // Detect 데이터를 location 기준으로 그룹화
@@ -58,6 +64,7 @@ public class DetectService {
                 })
                 .toList();
     }
+
 
 
 }
