@@ -15,9 +15,9 @@ public interface DetectRepository extends JpaRepository<Detect, Integer> {
             "FROM Detect d WHERE d.user.userId = :userId AND d.location IN :locations")
     List<DetectDTO> findDetectsByUserIdAndLocations(@Param("userId") int userId, @Param("locations") List<String> locations);
 
-    @Query("SELECT d.location, COUNT(d), d.address FROM Detect d " +
+    @Query("SELECT d.location, COUNT(d) FROM Detect d " +
             "WHERE d.user.userId = :userId AND d.location IN :locations " +
-            "GROUP BY d.location, d.address")
+            "GROUP BY d.location")
     List<Object[]> findDetectCountsByUserIdAndLocations(@Param("userId") int userId, @Param("locations") List<String> locations);
 
 }

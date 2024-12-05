@@ -47,7 +47,7 @@ public class DetectService {
 
             // address를 가져와 Map에 저장
             String address = deviceRepository.findAddressByUserIdAndLocation(userId, location);
-            addressMap.put(location, address != null ? address : "Unknown");
+            addressMap.put(location, address);
         }
 
         // Detect 데이터를 location 기준으로 그룹화
