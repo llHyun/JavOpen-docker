@@ -16,12 +16,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class DetectService {
     private final DetectRepository detectRepository;
-    private final DeviceRepository deviceRepository;
+
 
     @Autowired
-    public DetectService(DetectRepository detectRepository, DeviceRepository deviceRepository) {
+    public DetectService(DetectRepository detectRepository) {
         this.detectRepository = detectRepository;
-        this.deviceRepository = deviceRepository;
     }
 
     //장치등록
@@ -43,10 +42,8 @@ public class DetectService {
         for (Object[] row : detectCounts) {
             String location = (String) row[0];
             int count = ((Long) row[1]).intValue();
+            String address = (String) row[2];
             countMap.put(location, count);
-
-            // address를 가져와 Map에 저장
-            String address = deviceRepository.findAddressByUserIdAndLocation(userId, location);
             addressMap.put(location, address);
         }
 
@@ -58,9 +55,8 @@ public class DetectService {
         return locations.stream()
                 .map(location -> {
                     int count = countMap.getOrDefault(location, 0);
-                    String address = addressMap.getOrDefault(location, "Unknown");
                     List<DetectDTO> detectDetails = detectsByLocation.getOrDefault(location, List.of());
-                    return new DetectSummaryDTO(location, address, count, detectDetails);
+                    return new DetectSummaryDTO(location, count, detectDetails);
                 })
                 .toList();
     }

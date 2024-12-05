@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 public class DetectDTO {
     @JsonIgnore
     private String location;
-    @JsonIgnore
     private String address;
     private String antImg;
     private LocalDateTime date;
